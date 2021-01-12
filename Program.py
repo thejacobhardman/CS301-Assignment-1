@@ -2,33 +2,37 @@
 
 #Problem 1
 def Problem_One():
-    print("This is the first problem.")
+    print("This is the first problem.") #Replace Me
 
 #Problem 2
 def Problem_Two():
-    print("This is the second problem.")
+    print("This is the second problem.") #Replace Me
 
 #Problem 3
 def Problem_Three():
-    print("This is the third problem.")
+    print("This is the third problem.") #Replace Me
 
 #Problem 4
 def Problem_Four():
-    print("This is the fourth problem.")
+    print("This is the fourth problem.") #Replace Me
 
 #Problem 5
 def Problem_Five():
-    print("This is the fifth problem.")
+    print("This is the fifth problem.") #Replace Me
 
 #Problem 6
 def Problem_Six():
-    print("This is the sixth problem.")
+    print("This is the sixth problem.") #Replace Me
 
-def main():
+def Reset():
+    input("Press any key to continue.")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+
+def Main():
     isRunning = True
     while isRunning:
         print("Welcome!")
-        selection = input("\nPlease enter the corresponding number for the program that you'd like to test or type 'exit' to close: ")
+        selection = input("\nPlease enter the corresponding number for the program that you'd like to test or type 7 to close: ")
 
         if int(selection) == 1:
             Problem_One()
@@ -42,9 +46,11 @@ def main():
             Problem_Five()
         elif int(selection) == 6:
             Problem_Six()
-        elif selection == "exit" or selection == "Exit":
+        elif int(selection) == 7:
             isRunning = False
         else:
             print("Please enter a valid selection.")
 
-main()
+        Reset()
+
+Main()
