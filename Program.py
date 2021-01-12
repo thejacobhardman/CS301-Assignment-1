@@ -1,38 +1,50 @@
-#this is a comment
+# Jacob Hardman (TODO add your names here)
+# Dr. Miller
+# CS 301 
+# First Commit: 1/12/2021
+# Last Commit: 1/12/2021
+# Version: 0.1
 
-#Problem 1
+#Problem 1: Sum of Integers.
 def Problem_One():
-    print("This is the first problem.") #Replace Me
+    print("This is the first problem.") #TODO Replace Me
 
-#Problem 2
+#Problem 2: Valid Word?
 def Problem_Two():
-    print("This is the second problem.") #Replace Me
+    print("This is the second problem.") #TODO Replace Me
 
-#Problem 3
+#Problem 3: Can word be made from tiles?
 def Problem_Three():
-    print("This is the third problem.") #Replace Me
+    print("This is the third problem.") #TODO Replace Me
 
-#Problem 4
+#Problem 4: Find all words that can be made from tiles.
 def Problem_Four():
-    print("This is the fourth problem.") #Replace Me
+    print("This is the fourth problem.") #TODO Replace Me
 
-#Problem 5
+#Problem 5: NYT Spelling Bee Puzzle.
 def Problem_Five():
-    print("This is the fifth problem.") #Replace Me
+    print("This is the fifth problem.") #TODO Replace Me
 
-#Problem 6
+#Problem 6: Most bingos?
 def Problem_Six():
-    print("This is the sixth problem.") #Replace Me
+    print("This is the sixth problem.") #TODO Replace Me
 
 def Reset():
     input("Press any key to continue.")
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") # used this to clear console instead of getting into os specific commands. If you know a better way feel free to implement it.
 
 def Main():
     isRunning = True
     while isRunning:
         print("Welcome!")
-        selection = input("\nPlease enter the corresponding number for the program that you'd like to test or type 7 to close: ")
+        print("\n1: Sum of Integers"
+            + "\n2: Valid Word?"
+            + "\n3: Can word be made from tiles?"
+            + "\n4: Find all words that can be made from tiles."
+            + "\n5: NYT Spelling Bee Puzzle."
+            + "\n6: Most bingos?"
+            + "\n7: Exit Program.")
+        selection = input("\nPlease enter the corresponding number for the program that you'd like to test: ")
 
         if int(selection) == 1:
             Problem_One()
