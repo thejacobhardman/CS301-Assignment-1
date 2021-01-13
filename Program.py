@@ -1,4 +1,4 @@
-# Jacob Hardman (TODO add your names here)
+# Jacob Hardman, John Minney
 # Dr. Miller
 # CS 301 
 # First Commit: 1/12/2021
@@ -11,7 +11,14 @@ def Problem_One():
 
 #Problem 2: Valid Word?
 def Problem_Two():
-    print("This is the second problem.") #TODO Replace Me
+    userWord = input('Enter a word to validate: ')
+    with open('words.txt') as words_file:
+        for line in words_file:
+            if userWord == line.strip():
+                print('{} is a valid word!'.format(userWord))
+                return True
+    print('{} is not a valid word.'.format(userWord))
+    return False
 
 #Problem 3: Can word be made from tiles?
 def Problem_Three():
