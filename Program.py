@@ -21,10 +21,9 @@ def Is_Letter_In_String(letters, word):
 
 #Problem 1: Sum of Integers.
 def Problem_One():
-    print("This is the first problem.") 
     n = int(input("Enter a positive integer: "))
     total = n * (n+1) / 2
-    print("The sum of the first",n,"positive integers",total)
+    print("The sum of the first",n,"positive integers =",total)
 
 #Problem 2: Valid Word?
 def Problem_Two():
