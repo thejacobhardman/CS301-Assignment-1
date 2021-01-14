@@ -1,7 +1,13 @@
 # CS301-Assignment-1
  A series of assignments from the CS301 course at UNC.
 
- Jacob Hardman (TODO add your names here)
+ Jacob Hardman
+
+ John Minney
+
+ Niko Antuna
+
+ O Moo Gay
 
  Dr. Miller
 
@@ -11,4 +17,4 @@
 
  Last Commit: 1/14/2021
  
- Version: 0.2
+ Version: 0.3
