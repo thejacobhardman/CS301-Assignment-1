@@ -1,10 +1,12 @@
 # Jacob Hardman
 # John Minney
+# Niko Antuna
+# O Moo Gay
 # Dr. Miller
 # CS 301 
 # First Commit: 1/12/2021
 # Last Commit: 1/14/2021
-# Version: 0.2
+# Version: 0.3
 
 ### EXTRA FUNCTIONS
 def Get_Letter_Set():
@@ -38,7 +40,28 @@ def Problem_Two():
 
 #Problem 3: Can word be made from tiles?
 def Problem_Three():
-    print("This is the third problem.") #TODO Replace Me
+    tiles = ["b", "e", "r", "a", "t", "d", "s"] # Change this list and the word below it for different tests
+    word = "darts"
+
+    joined_tiles = ''.join(tiles)
+
+    word_construct = ""
+    used_letters = ""
+
+    for outside_counter in range(len(word)):
+        for inside_counter in range(len(tiles)):
+            is_letter_valid = Is_Letter_In_String(word[outside_counter], tiles[inside_counter])
+
+            if is_letter_valid:
+                word_construct += tiles[inside_counter]
+                used_letters += tiles[inside_counter]
+                used_letters += tiles[inside_counter]
+                tiles[inside_counter] = ""
+
+    if word_construct == word:
+        print("You can make the word '" + word + "' with the tiles '" + joined_tiles + ".'")
+    else:
+        print("You can NOT make the word '" + word + "' with the tiles '" + joined_tiles + ".'")
 
 #Problem 4: Find all words that can be made from tiles.
 def Problem_Four():
