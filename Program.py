@@ -3,8 +3,21 @@
 # Dr. Miller
 # CS 301 
 # First Commit: 1/12/2021
-# Last Commit: 1/12/2021
-# Version: 0.1
+# Last Commit: 1/14/2021
+# Version: 0.2
+
+### EXTRA FUNCTIONS
+def Get_Letter_Set():
+    while True:
+        letter_set = input('Enter a String of 6 characters: ').lower()
+        if len(letter_set) == 6:
+            return letter_set
+        else:
+            print('Only a String of 6 characters are allowed...')
+
+def Is_Letter_In_String(letters, word):
+    letter_check = [characters in letters for characters in word]
+    return(all(letter_check))
 
 #Problem 1: Sum of Integers.
 def Problem_One():
@@ -45,18 +58,6 @@ def Problem_Five():
         print(*solved_words, sep=', ')
     else:
         print('Words not found...')
-
-def Get_Letter_Set():
-    while True:
-        letter_set = input('Enter a String of 6 characters: ').lower()
-        if len(letter_set) == 6:
-            return letter_set
-        else:
-            print('Only a String of 6 characters are allowed...')
-
-def Is_Letter_In_String(letters, word):
-    letter_check = [characters in letters for characters in word]
-    return(all(letter_check))
 
 #Problem 6: Most bingos?
 def Problem_Six():
