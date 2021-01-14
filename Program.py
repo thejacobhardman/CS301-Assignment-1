@@ -1,4 +1,5 @@
-# Jacob Hardman (TODO add your names here)
+# Jacob Hardman
+# John Minney
 # Dr. Miller
 # CS 301 
 # First Commit: 1/12/2021
@@ -11,7 +12,14 @@ def Problem_One():
 
 #Problem 2: Valid Word?
 def Problem_Two():
-    print("This is the second problem.") #TODO Replace Me
+    userWord = input('Enter a word to validate: ')
+    with open('words.txt') as words_file:
+        for line in words_file:
+            if userWord == line.strip():
+                print('{} is a valid word!\n'.format(userWord))
+                return True
+    print('{} is not a valid word.\n'.format(userWord))
+    return False
 
 #Problem 3: Can word be made from tiles?
 def Problem_Three():
@@ -23,7 +31,32 @@ def Problem_Four():
 
 #Problem 5: NYT Spelling Bee Puzzle.
 def Problem_Five():
-    print("This is the fifth problem.") #TODO Replace Me
+    letters_of_the_day = Get_Letter_Set() # Letters from the Example
+    center_letter = input('Please Enter your Center Character: ')
+    letters_of_the_day += center_letter
+    solved_words = []
+    with open('words.txt') as words_file:
+        for line in words_file:
+            word = line.strip()
+            if (len(word) >= 5) and (center_letter in word) and (Is_Letter_In_String(letters_of_the_day, word)):
+                solved_words.append(word)
+    if (len(solved_words) != 0):
+        print('\nFound Words:')
+        print(*solved_words, sep=', ')
+    else:
+        print('Words not found...')
+
+def Get_Letter_Set():
+    while True:
+        letter_set = input('Enter a String of 6 characters: ').lower()
+        if len(letter_set) == 6:
+            return letter_set
+        else:
+            print('Only a String of 6 characters are allowed...')
+
+def Is_Letter_In_String(letters, word):
+    letter_check = [characters in letters for characters in word]
+    return(all(letter_check))
 
 #Problem 6: Most bingos?
 def Problem_Six():
