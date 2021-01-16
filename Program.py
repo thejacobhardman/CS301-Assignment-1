@@ -5,10 +5,16 @@
 # Dr. Miller
 # CS 301 
 # First Commit: 1/12/2021
-# Last Commit: 1/14/2021
-# Version: 0.3
+# Last Commit: 1/16/2021
+# Version: 1.0
+
+from itertools import combinations
+import time, os
 
 ### EXTRA FUNCTIONS
+def cls(): # I got this method to clear the console screen from StackOverflow.com: https://stackoverflow.com/a/684344 (Jacob)
+    os.system('cls' if os.name=='nt' else 'clear')
+
 def Get_Letter_Set():
     while True:
         letter_set = input('Enter a String of 6 characters: ').lower()
@@ -20,6 +26,32 @@ def Get_Letter_Set():
 def Is_Letter_In_String(letters, word):
     letter_check = [characters in letters for characters in word]
     return(all(letter_check))
+
+# Generate the eight tiles used for Problem 6
+# I actually learned this last year when I did a Google Coding competition (John)
+def Generate_All_Eight_Tiles():
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    vowels = 'aeiou'
+    all_tiles = set(combinations(alphabet, 8))
+    valid_tiles = []
+    for tiles in all_tiles:
+        valid = Is_Letter_In_String(tiles, vowels)
+        if valid:
+            valid_tiles.append(tiles)
+    return [''.join(tile) for tile in valid_tiles]
+
+def Filter_Eight_Letter_Words():
+    file = open("words.txt", "r")
+    filtered_words_list = []
+    for line in file:
+        if len(line) == 10:
+            word = line[:-2]
+            filtered_words_list.append(word)
+
+    file.close()
+    return filtered_words_list
+
+##################################### PROBLEMS START HERE ###########################################
 
 #Problem 1: Sum of Integers.
 def Problem_One():
@@ -65,7 +97,6 @@ def Problem_Three():
 
 #Problem 4: Find all words that can be made from tiles.
 def Problem_Four():
-    import time
     wordTile = "retains"
     print(f"Given the tileset: {wordTile}, you could make the words: ")
     with open("words.txt","r") as texts:
@@ -93,12 +124,42 @@ def Problem_Five():
         print('Words not found...')
 
 #Problem 6: Most bingos?
+# def Problem_Six():
+#     # The way I'm doing this it is going to run slow... but I can't think of anything else (John)
+#     print('Loading... No seriously this takes FOREVER...')
+#     tile_sets = Generate_All_Eight_Tiles()
+#     best_bingo = ([], 0)
+#     all_words = [line.strip() for line in open('words.txt').readlines()]
+#     for tile_set in tile_sets:
+#         bingo = 0
+#         for word in all_words:
+#             if (len(word) == 8) and (Is_Letter_In_String(tile_set, word)):
+#                 bingo += 1
+#         if (bingo > best_bingo[1]):
+#             best_bingo = (tile_set, bingo)
+#     print('The Best Bingo is: ' + best_bingo)
+
 def Problem_Six():
-    print("This is the sixth problem.") #TODO Replace Me
+    # The way I'm doing this it is going to run slow... but I can't think of anything else (John)
+    print('Loading... No seriously this takes FOREVER...')
+    tile_sets = Generate_All_Eight_Tiles()
+    print(tile_sets)
+    best_bingo = ([], 0)
+    filtered_word_list = Filter_Eight_Letter_Words()
+    #all_words = [line.strip() for line in open('words.txt').readlines()]
+    for tile_set in tile_sets:
+        bingo = 0
+        for word in filtered_word_list:
+            if (Is_Letter_In_String(tile_set, word)):
+                bingo += 1
+        if (bingo > best_bingo[1]):
+            best_bingo = (tile_set, bingo)
+    best_bingo_string = best_bingo[0]
+    print(f"The Best Bingo is: {best_bingo_string}")
 
 def Reset():
     input("Press any key to continue.")
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") # used this to clear console instead of getting into os specific commands. If you know a better way feel free to implement it.
+    cls()
 
 def Main():
     isRunning = True
