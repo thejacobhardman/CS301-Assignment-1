@@ -9,8 +9,12 @@
 # Version: 0.3
 
 from itertools import combinations
+import os
 
 ### EXTRA FUNCTIONS
+def cls(): ### I got this method to clear the console screen from StackOverflow.com: https://stackoverflow.com/a/684344
+    os.system('cls' if os.name=='nt' else 'clear')
+
 def Get_Letter_Set():
     while True:
         letter_set = input('Enter a String of 6 characters: ').lower()
@@ -22,6 +26,13 @@ def Get_Letter_Set():
 def Is_Letter_In_String(letters, word):
     letter_check = [characters in letters for characters in word]
     return(all(letter_check))
+
+# Generate the eight tiles used for Problem 6
+# I actually learned this last year when I did a Google Coding competition (John)
+def Generate_All_Eight_Tiles():
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    all_tiles = set(combinations(alphabet, 8))
+    return [''.join(tile) for tile in all_tiles]
 
 #Problem 1: Sum of Integers.
 def Problem_One():
@@ -61,9 +72,9 @@ def Problem_Three():
                 tiles[inside_counter] = ""
 
     if word_construct == word:
-        print("You can make the word '" + word + "' with the tiles '" + joined_tiles + ".'")
+        print(f"You can make the word '{word}' with the tiles '{joined_tiles}'.")
     else:
-        print("You can NOT make the word '" + word + "' with the tiles '" + joined_tiles + ".'")
+        print(f"You can NOT make the word '{word}' with the tiles '{joined_tiles}'.")
 
 #Problem 4: Find all words that can be made from tiles.
 def Problem_Four():
@@ -110,16 +121,9 @@ def Problem_Six():
             best_bingo = (tile_set, bingo)
     print('The Best Bingo is: ' + best_bingo)
 
-# Generate the eight tiles used for Problem 6
-# I actually learned this last year when I did a Google Coding competition (John)
-def Generate_All_Eight_Tiles():
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    all_tiles = set(combinations(alphabet, 8))
-    return [''.join(tile) for tile in all_tiles]
-
 def Reset():
     input("Press any key to continue.")
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") # used this to clear console instead of getting into os specific commands. If you know a better way feel free to implement it.
+    cls()
 
 def Main():
     isRunning = True
