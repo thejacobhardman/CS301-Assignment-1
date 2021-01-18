@@ -8,6 +8,8 @@
 # Last Commit: 1/14/2021
 # Version: 0.3
 
+from itertools import combinations
+
 ### EXTRA FUNCTIONS
 def Get_Letter_Set():
     while True:
@@ -93,8 +95,27 @@ def Problem_Five():
         print('Words not found...')
 
 #Problem 6: Most bingos?
+# The way I'm doing this it is going to run slow... but I can't thing of anything else (John)
 def Problem_Six():
-    print("This is the sixth problem.") #TODO Replace Me
+    print('Loading... No seriously this takes FOREVER...')
+    tile_sets = Generate_All_Eight_Tiles()
+    best_bingo = ([], 0)
+    all_words = [line.strip() for line in open('words.txt').readlines()]
+    for tile_set in tile_sets:
+        bingo = 0
+        for word in all_words:
+            if (len(word) == 8) and (Is_Letter_In_String(tile_set, word)):
+                bingo += 1
+        if (bingo > best_bingo[1]):
+            best_bingo = (tile_set, bingo)
+    print('The Best Bingo is: ' + best_bingo)
+
+# Generate the eight tiles used for Problem 6
+# I actually learned this last year when I did a Google Coding competition (John)
+def Generate_All_Eight_Tiles():
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    all_tiles = set(combinations(alphabet, 8))
+    return [''.join(tile) for tile in all_tiles]
 
 def Reset():
     input("Press any key to continue.")
